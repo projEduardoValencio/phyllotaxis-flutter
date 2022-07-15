@@ -37,9 +37,6 @@ class _PhyllotaxisState extends State<Phyllotaxis> {
 }
 
 class CanvasPhyllotaxis extends Sketch {
-  double posX = 0;
-  double posY = 0;
-
   double c = 7;
   static double angulo = 137.5;
   double angRad = 2 * pi * angulo / 360;
@@ -58,13 +55,18 @@ class CanvasPhyllotaxis extends Sketch {
 
   @override
   Future<void> draw() async {
-    double r = c * sqrt(n);
-    double phi = n * angRad;
+    double posX = width / 2;
+    double posY = height / 2;
+    translate(x: posY, y: posY);
+    for (var i = 0; i <= n; i++) {
+      double r = c * sqrt(i);
+      double phi = i * angRad;
+      double x = cos(phi) * r;
+      double y = sin(phi) * r;
 
-    posX = (width / 2) + cos(phi) * r;
-    posY = (height / 2) + sin(phi) * r;
-
-    circle(center: Offset(posX, posY), diameter: 7);
+      fill(color: HSVColor.fromAHSV(1, (r * 3) % 255, 1, 1).toColor());
+      circle(center: Offset(x, y), diameter: 8);
+    }
 
     n += 1;
   }
