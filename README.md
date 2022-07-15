@@ -16,7 +16,8 @@ $\qquad$Para essa representação gráfica foi utilizado o framework **Flutter**
 ## Lógica
 
 ```Dart
-final n
+//O valor n determina o tamanho do padrão
+final n=100;
 //O loop é efeito para desenhar os pontos
 for (int i = 0; i < n; i++) {
     final double angle = i * (137.5 / 360) * (2 * pi);
