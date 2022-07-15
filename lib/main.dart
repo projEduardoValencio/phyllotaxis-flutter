@@ -39,9 +39,6 @@ class _PhyllotaxisState extends State<Phyllotaxis> {
 class CanvasPhyllotaxis extends Sketch {
   final int c = 7;
   final double angulo = 137.5;
-  //350=2pi
-  //100=x
-  //2pi*angulo/360
 
   int n = 0;
 
@@ -53,6 +50,7 @@ class CanvasPhyllotaxis extends Sketch {
   @override
   void draw() {
     background(color: Colors.black);
+    //centralizando
     translate(x: width / 2, y: height / 2);
 
     final bAngle = n * 0.01;
@@ -61,7 +59,6 @@ class CanvasPhyllotaxis extends Sketch {
       final radius = c * sqrt(i);
       final x = radius * cos(angle);
       final y = radius * sin(angle);
-      final hue = (i / 3) % 360;
 
       fill(color: HSVColor.fromAHSV(1, (radius * 3) % 255, 1, 1).toColor());
       noStroke();
