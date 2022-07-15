@@ -1,16 +1,28 @@
-# phyllotaxis
+# Phyllotaxis Patterns
 
-A new Flutter project.
+$\qquad$É um padrão produzido por plantas estudado tanto por biólogos quanto por matemáticos a fim de descrever o arranjo. 
+$\qquad$Aqui o modelo apresentado é baseado no angulo de *Fibonacci* $\approx360.5°$, com isso e muitos outros estudos para este exemplo foi utilizado a seguinte formula:
+$$\phi = n*137.75,\qquad r=c\sqrt{n}$$
+<p align="center">
+<img src="assets/preview/cap-1.png" alt="drawing" width="350" style="center"/>
+</p>
 
-## Getting Started
+---
+## Biblioteca utilizada
 
-This project is a starting point for a Flutter application.
+$\qquad$Para essa representação gráfica foi utilizado o framework **Flutter** com a biblioteca Flutter Processing. A seleção da linguagem foi devido ao interesse e necessidade de treinar a aplicar os conhecimentos adquiridos sobre a linguagem. 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Lógica
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```Dart
+final n
+//O loop é efeito para desenhar os pontos
+for (int i = 0; i < n; i++) {
+    final double angle = i * (137.5 / 360) * (2 * pi);
+    final double radius = c * sqrt(i);
+    //passando a coordenada polar para o plano cartesiano
+    final double x = radius * cos(angle);
+    final double y = radius * sin(angle);
+```
+O arquivo com o código pode ser acessado por este link: [main.dart](lib/main.dart)

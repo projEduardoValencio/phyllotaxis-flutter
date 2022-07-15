@@ -55,7 +55,7 @@ class CanvasPhyllotaxis extends Sketch {
     background(color: Colors.black);
     translate(x: width / 2, y: height / 2);
 
-    final bAngle = n * 0.5;
+    final bAngle = n * 0.01;
     for (int i = 0; i < n; i++) {
       final angle = i * (137.5 / 360) * (2 * pi) + bAngle;
       final radius = c * sqrt(i);
@@ -68,7 +68,7 @@ class CanvasPhyllotaxis extends Sketch {
       circle(center: Offset(x, y), diameter: 8);
     }
 
-    n += 5;
-    n.clamp(0, 5000);
+    n += 2;
+    n.clamp(0, 1000);
   }
 }
