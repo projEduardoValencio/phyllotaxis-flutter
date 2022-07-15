@@ -37,37 +37,38 @@ class _PhyllotaxisState extends State<Phyllotaxis> {
 }
 
 class CanvasPhyllotaxis extends Sketch {
-  double c = 7;
-  static double angulo = 137.5;
-  double angRad = 2 * pi * angulo / 360;
+  final int c = 7;
+  final double angulo = 137.5;
   //350=2pi
   //100=x
   //2pi*angulo/360
 
-  double n = 0;
+  int n = 0;
 
   @override
-  Future<void> setup() async {
-    // TODO: do setup stuff here
+  void setup() {
     size(width: 500, height: 500);
-    background(color: Colors.black);
   }
 
   @override
-  Future<void> draw() async {
-    double posX = width / 2;
-    double posY = height / 2;
-    translate(x: posY, y: posY);
-    for (var i = 0; i <= n; i++) {
-      double r = c * sqrt(i);
-      double phi = i * angRad;
-      double x = cos(phi) * r;
-      double y = sin(phi) * r;
+  void draw() {
+    background(color: Colors.black);
+    translate(x: width / 2, y: height / 2);
 
-      fill(color: HSVColor.fromAHSV(1, (r * 3) % 255, 1, 1).toColor());
+    final bAngle = n * 0.5;
+    for (int i = 0; i < n; i++) {
+      final angle = i * (137.5 / 360) * (2 * pi) + bAngle;
+      final radius = c * sqrt(i);
+      final x = radius * cos(angle);
+      final y = radius * sin(angle);
+      final hue = (i / 3) % 360;
+
+      fill(color: HSVColor.fromAHSV(1, (radius * 3) % 255, 1, 1).toColor());
+      noStroke();
       circle(center: Offset(x, y), diameter: 8);
     }
 
-    n += 1;
+    n += 5;
+    n.clamp(0, 5000);
   }
 }
